@@ -1,0 +1,12 @@
+kind: Pod
+metadata:
+  labels:
+    label: kubernetes
+     
+spec:
+  containers:
+  - name: maven
+    image: maven:3-jdk-8
+    command:
+    - cat
+    tty: true
