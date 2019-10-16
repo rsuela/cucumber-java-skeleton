@@ -16,7 +16,7 @@ pipeline {
     stage('build') {
       steps {
           container('maven') {
-            sh "mvn -Dmaven.test.failure.ignore clean package"
+            sh "./mvnw test"
           }
       }
     }
