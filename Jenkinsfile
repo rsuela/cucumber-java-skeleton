@@ -16,7 +16,7 @@ pipeline {
     stage('build') {
       steps {
           container('maven') {
-            sh "./mvnw test"
+            sh "mvn test"
           }
       }
     }
