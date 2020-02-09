@@ -16,24 +16,26 @@ pipeline {
     stage('build') {
       steps {
           container('maven') {
-            sh "mvn test"
+            sh "./gradlew test --rerun-tasks --info"
+            sh "ls -al"
+            sh "ls build"
           }
       }
     }
-    stage('archive') {
-      steps {
-          container('maven') {
-            archive 'target/*.jar'
-          }
-      }
-    }
+    //stage('archive') {
+    //  steps {
+    //      container('maven') {
+    //        archive 'target/*.jar'
+    //      }
+    // }
+    //}
   }
-  post {
-      always{
-            container('maven') {
-                junit '**/target/surefire-reports/TEST-*.xml'
-            }
+  //post {
+      //always{
+           // container('maven') {
+           //     junit '**/target/surefire-reports/TEST-*.xml'
+           // }
           //logstashSend failBuild: true, maxLines: 1000
-      }
-  }
+     // }
+  //}
 }
