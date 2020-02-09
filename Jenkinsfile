@@ -22,18 +22,11 @@ pipeline {
           }
       }
     }
-    stage('archive') {
-      steps {
-          container('maven') {
-            archive 'build/generated/*.jar'
-          }
-     }
-    }
   }
   post {
     always{
       container('maven') {
-        junit '**/builds/TEST-*.xml'
+        junit '**/build/test-results/test/TEST-*.xml'
       }
     }
   }
