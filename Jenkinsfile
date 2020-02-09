@@ -22,20 +22,19 @@ pipeline {
           }
       }
     }
-    //stage('archive') {
-    //  steps {
-    //      container('maven') {
-    //        archive 'target/*.jar'
-    //      }
-    // }
-    //}
+    stage('archive') {
+      steps {
+          container('maven') {
+            archive 'build/generated/*.jar'
+          }
+     }
+    }
   }
-  //post {
-      //always{
-           // container('maven') {
-           //     junit '**/target/surefire-reports/TEST-*.xml'
-           // }
-          //logstashSend failBuild: true, maxLines: 1000
-     // }
-  //}
+  post {
+    always{
+      container('maven') {
+        junit '**/builds/TEST-*.xml'
+      }
+    }
+  }
 }
