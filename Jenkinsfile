@@ -25,9 +25,8 @@ pipeline {
   }
   post {
     always{
-      container('maven') {
-        junit '**/build/test-results/test/TEST-*.xml'
-      }
+      junit '**/build/test-results/test/TEST-*.xml'
+      cucumber fileIncludePattern: '**/Cucumber.json', sortingMethod: 'ALPHABETICAL'
     }
   }
 }
