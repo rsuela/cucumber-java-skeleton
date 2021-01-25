@@ -10,9 +10,7 @@ pipeline {
     }
     stage('build') {
       steps {
-            sh "./gradlew test --rerun-tasks --info"
-            sh "ls -al"
-            sh "ls build"
+            bat "gradlew test --rerun-tasks --info"
       }
     }
   }
