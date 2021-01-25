@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        kubernetes {
-          label 'maven-node'
-          yamlFile 'KubernetesPod.yaml'
-        }
-    }
+    agent master
   stages {
     stage('Checkout') {
       steps {
