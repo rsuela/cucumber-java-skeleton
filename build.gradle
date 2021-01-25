@@ -1,4 +1,7 @@
-apply plugin: 'java'
+plugins {
+  id "java"
+  id "org.sonarqube" version "3.1"
+}
 
 project.ext {
     cucumberVersion = '4.7.2'
@@ -12,3 +15,4 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
