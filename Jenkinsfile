@@ -5,18 +5,14 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        container('maven') {
-          checkout scm
-        }
+        checkout scm
       }
     }
     stage('build') {
       steps {
-          container('maven') {
             sh "./gradlew test --rerun-tasks --info"
             sh "ls -al"
             sh "ls build"
-          }
       }
     }
   }
